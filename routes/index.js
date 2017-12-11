@@ -98,9 +98,9 @@ router.get('/users/:userId(\\d+)/quizzes',
 
 
 // Routes for the resource /quizzes
-router.get('/quizzes',
+router.get('/quizzes.:format?',
 	quizController.index);
-router.get('/quizzes/:quizId(\\d+)',
+router.get('/quizzes/:quizId(\\d+).:format?',
 	quizController.show);
 router.get('/quizzes/new',
     sessionController.loginRequired,
@@ -123,13 +123,13 @@ router.delete('/quizzes/:quizId(\\d+)',
     quizController.adminOrAuthorRequired,
 	quizController.destroy);
 
-router.get('/quizzes/:quizId(\\d+)/play',  
+router.get('/quizzes/:quizId(\\d+)/play',
 	quizController.play);
 router.get('/quizzes/:quizId(\\d+)/check', 
 	quizController.check);
 
 
-router.get('/quizzes/:quizId(\\d+)/tips/new',  
+router.get('/quizzes/:quizId(\\d+)/tips/new',
     sessionController.loginRequired,
 	tipController.new);
 router.post('/quizzes/:quizId(\\d+)/tips',     
